@@ -9,7 +9,11 @@ module K8s
     # @return [String]
     def self.path(api_version)
       if api_version.include? '/'
-        File.join('/apis', api_version)
+        if api_version.starts_with?("/apis")
+          api_version
+        else
+          File.join('/apis', api_version)
+        end
       else
         File.join('/api', api_version)
       end
