@@ -25,7 +25,7 @@ module K8s
   class Config < ConfigStruct
     # Common dry-types for config
     class Types
-      include Dry::Types.module
+      include Dry::Types()
     end
 
     # structured cluster

@@ -8,7 +8,7 @@ module K8s
   module API
     # Common Dry::Types used in the API
     module Types
-      include Dry::Types.module
+      include Dry::Types()
     end
 
     # Common API struct type, handling JSON transforms with symbol keys
@@ -23,8 +23,8 @@ module K8s
       end
 
       # @return [String]
-      def to_json(*_args)
-        to_hash.to_json
+      def to_json(*args, **vargs)
+        to_hash.to_json(*args, **vargs)
       end
     end
   end

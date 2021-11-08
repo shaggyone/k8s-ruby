@@ -5,6 +5,7 @@ require 'base64'
 require 'yajl'
 require 'monitor'
 require 'uri'
+require 'json'
 
 require 'k8s/util'
 

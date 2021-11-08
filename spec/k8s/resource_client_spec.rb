@@ -90,11 +90,11 @@ RSpec.describe K8s::ResourceClient do
     end
 
     context "PUT /api/v1/nodes/*" do
-      let(:resource) { K8s::Resource.new(
+      let(:resource) { K8s::Resource.new({
         kind: 'Node',
         metadata: { name: 'test', resourceVersion: "1" },
         spec: { unschedulable: true },
-      ) }
+      }) }
 
       before do
         stub_request(:put, 'localhost:8080/api/v1/nodes/test')
@@ -125,11 +125,11 @@ RSpec.describe K8s::ResourceClient do
     end
 
     context "POST /api/v1/nodes/" do
-      let(:resource) { K8s::Resource.new(
+      let(:resource) { K8s::Resource.new({
         kind: 'Node',
         metadata: { name: 'test' },
         spec: { unschedulable: true },
-      ) }
+      }) }
 
       before do
         stub_request(:post, 'localhost:8080/api/v1/nodes')
@@ -183,11 +183,11 @@ RSpec.describe K8s::ResourceClient do
     end
 
     context "PUT /api/v1/nodes/*/status" do
-      let(:resource) { K8s::Resource.new(
+      let(:resource) { K8s::Resource.new({
         kind: 'Node',
         metadata: { name: 'test', resourceVersion: "1" },
         status: { foo: 'bar' },
-      ) }
+      }) }
 
       before do
         stub_request(:put, 'localhost:8080/api/v1/nodes/test/status')
@@ -245,10 +245,10 @@ RSpec.describe K8s::ResourceClient do
 
     subject { described_class.new(transport, api_client, api_resource) }
 
-    let(:resource) { K8s::Resource.new(
+    let(:resource) { K8s::Resource.new({
       kind: 'Pod',
       metadata: { name: 'test', namespace: 'default' },
-    ) }
+    }) }
     let(:resource_list) { K8s::API::MetaV1::List.new(metadata: {}, items: [resource]) }
 
     context "POST /api/v1/pods/namespaces/default/pods" do

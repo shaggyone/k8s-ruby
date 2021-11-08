@@ -51,8 +51,8 @@ module K8s
 
     # @param options [Hash] see Hash#to_json
     # @return [String]
-    def to_json(**options)
-      to_hash.to_json(**options)
+    def to_json(*args, **vargs)
+      to_hash.to_json(*args, **vargs)
     end
 
     # @param other [K8s::Resource]
